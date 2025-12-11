@@ -13,27 +13,41 @@ public class Guess {
         // "Cast"/Change the double to an int
         int numberImThinkingOf = (int)randomValue;
 
+
         // Prompt the user to type something into the console
         System.out.println("I'm thinking of a number between 1 and 10, can you guess what it is?");
 
-        // Record the value from the User as lowercase letters
-        String userGuessStr = scanner.nextLine().toLowerCase();
+        // Create a loop to repeat guesses until they get it correct
+        while(true){
+            
+            // Record the value from the User as lowercase letters
+            String userGuessStr = scanner.nextLine().toLowerCase();
 
-        // Convert the letters to an int
-        int userGuessInt = Integer.parseInt(userGuessStr);
+            // Convert the letters to an int
+            int userGuessInt = Integer.parseInt(userGuessStr);
 
-        // Compare the users guess int with the random int
-        if (userGuessInt == numberImThinkingOf) {
+            // Compare the users guess int with the random int
 
-            System.out.println("That's right, I was thinking of " + numberImThinkingOf + "!");
+            // If the number is correct, tell them congratulations!
+            if (userGuessInt == numberImThinkingOf) {
 
-        } else {
+                System.out.println("That's right, I was thinking of " + numberImThinkingOf + "!");
 
-            System.out.println("Sorry, " + userGuessInt + " is not the number I was thinking of!");
+            // If the number is too low, give them a hint
+            } else if(numberImThinkingOf < userGuessInt ){
+
+                System.out.println("Sorry, " + userGuessInt + " is not the number I was thinking of! Try LOWER!");
+
+            // If the number is too high, give them a hint
+            } else if(numberImThinkingOf > userGuessInt ){
+                
+                System.out.println("Sorry, " + userGuessInt + " is not the number I was thinking of! Try HIGHER!");
+
+            }
 
         }
 
-        scanner.close();
+        //scanner.close();
     }
     
 }
